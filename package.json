@@ -1,0 +1,43 @@
+{
+    "name": "block",
+    "description": "A lite theme for Ghost v2",
+    "homepage": "https://github.com/ygbhf/ghost-theme-block",
+    "demo": "https://github.com/ygbhf/ghost-theme-block",
+    "version": "0.0.1",
+    "engines": {
+        "ghost": "^2.0.0"
+    },
+    "license": "MIT",
+    "screenshots": {
+        "desktop": "assets/screenshot-desktop.png",
+        "mobile": "assets/screenshot-mobile.png"
+    },
+    "author": {
+        "name": "YJK",
+        "email": "a@yjk.im",
+        "url": "https://yjk.im/"
+    },
+    "gpm": {
+        "type": "theme",
+        "categories": [
+            "Minimal",
+            "Simple",
+            "Personal Blogs",
+            "Lite"
+        ]
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ygbhf/ghost-theme-block.git"
+    },
+    "config": {
+        "posts_per_page": 6
+    },
+    "bugs": "https://github.com/ygbhf/ghost-theme-block/issues",
+    "contributors": "https://github.com/ygbhf/ghost-theme-block/graphs/contributors"
+}

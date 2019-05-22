@@ -1,0 +1,12 @@
+<div class="content-navi">
+    <p>
+    {{#if prev}}
+        <a href="{{page_url prev}}"><i class="fa fa-chevron-circle-left"></i> NEWER POSTS</a>&nbsp;&nbsp;
+    {{/if}}
+    	{{page}}/{{pages}}&nbsp;&nbsp;
+    {{#if next}}
+        <a href="{{page_url next}}"><i class="fa fa-chevron-circle-right"></i> OLDER POSTS</a>&nbsp;&nbsp;
+    {{/if}}
+    	<a href="#"><i class="fa fa-chevron-circle-up"></i> TOP</a>&nbsp;
+    </p>
+</div>

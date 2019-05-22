@@ -1,0 +1,15 @@
+{{!-- This is the post loop - each post will be output using this markup --}}
+{{#foreach posts}}
+
+<div class="content-header">
+	<div class="ch-left">
+		<h2><a href="{{url}}">{{title}}</a></h2>
+		<p>{{excerpt words="16"}} <a class="read-more" href="{{url}}">&raquo; read more...</a></p>
+		<div class="ch-tags">
+			<i class="fa fa-calendar"></i>&nbsp; {{date format="YYYY-MM-DD"}}  {{tags prefix="&nbsp; <i class=\"fa fa-tag\"></i> "}}</p>
+		</div>
+	</div>
+	<div class="ch-right" {{#if feature_image}}style="background-image: url({{feature_image}});background-size: cover;background-position: 50%;"{{else}}style="background-image: url(https://cdn.con.sh/id/868/1000/500);background-size: cover;background-position: 50%;"{{/if}}></div>
+</div>
+
+{{/foreach}}

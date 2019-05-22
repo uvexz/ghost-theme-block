@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{!-- Document Settings --}}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    {{!-- Page Meta --}}
+    <title>
+        {{#is "home"}}
+            {{@site.title}}
+        {{else}}
+            {{#is "tag"}}
+                {{#tag}}
+                    {{name}} - Tag - {{@site.title}}
+                {{/tag}}
+            {{else}}
+                {{#is "page, post"}}
+                    {{meta_title}} - {{@site.title}}
+                {{else}}
+                    {{meta_title}}
+                {{/is}}
+            {{/is}}
+        {{/is}}
+    </title>
+    {{!-- Mobile Meta --}}
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    {{!-- Ghost outputs important style and meta data with this tag --}}
+    {{ghost_head}}
+    <style>
+        body,a,blockquote,body,h1,h2,h3,h4,h5,input,li,p,textarea,ul{font-family:"Noto Sans SC Sliced","Noto Sans SC","Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Hiragino Kaku Gothic Pro",Meiryo,"Malgun Gothic",sans-serif;}
+        pre,code{font-family: Menlo,Monaco,Consolas,"Courier New",monospace,"Noto Sans SC Sliced","Noto Sans SC","Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei";}
+        body {margin: 0;padding: 0;} a {color:#555;text-decoration: none!important;} a:visited {color:#555;} a:hover {color:#000;} 
+        .header {position: relative;top: 0;left: 0;padding: 20px 20px 50px 20px;border-bottom: 1px solid #eee;}
+            .header .logo {float: left;font-size: 14px;margin-right: 10px;padding: 6px 12px;background-color: #000;text-transform:uppercase;}
+                .header .logo a {color:#fff;font-weight: 600;}
+            .header .navi {float: right;padding: 6px 2px 6px 12px;background-color: #fff;text-transform:uppercase}
+                .header .navi li {display: initial;padding-right: 10px;color:#555;font-size: 14px;}
+                    .header .navi li a.active {font-weight: 600;}
+        .content{}
+            .content .content-header {width: 100%;height: 60vh;display: -webkit-flex;display: flex;align-items: center;margin-bottom: 10px;}
+                .content .content-header .ch-left {width: 50%;padding: 0 7vw;}
+                    .content .content-header .ch-left h2 {font-size: 25px;text-transform:uppercase;margin-bottom: 20px;}
+                    .content .content-header .ch-left p {font-size: 13px;margin-bottom: 20px;}
+                    .content .content-header .ch-left .ch-tags {font-size: 12px;text-transform:uppercase;}
+                .content .content-header .ch-right {width: 50%;height: 100%;background: #77A1D3; background: -webkit-linear-gradient(to right, #E684AE, #79CBCA, #77A1D3);background: linear-gradient(to right, #E684AE, #79CBCA, #77A1D3); }
+            .content .content-navi {margin: 100px 0; text-align: center;font-size: 13px;}
+            .content .content-post {width: 100%;height: 50vh;display: -webkit-flex;display: flex;align-items: center;justify-content: center;background: #77A1D3; background: -webkit-linear-gradient(to right, #E684AE, #79CBCA, #77A1D3);background: linear-gradient(to right, #E684AE, #79CBCA, #77A1D3);}
+                .content .content-post .cp-header h2 {font-size: 30px;color:#fff;margin-bottom: 20px;text-shadow: 1px 0px 3px rgba(0,0,0,0.8);}
+            .article {max-width: 600px;margin: -50px auto 0 auto;background-color: #fff;padding: 20px;}
+                .article .back-to-top{text-transform:uppercase;}
+                .article .back-to-top a {border-bottom: 0;}
+                .article img{display:inline-block;margin-bottom:10px;padding:2px;height:auto;max-width:100%;border:1px solid #ccc;border-radius:1px;background-color:#fff;line-height:1.42857143;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;transition:all .2s ease-in-out}
+                .article pre {border-radius:1px;padding:0}
+                .article code {border-radius:1px;}
+                .article ul {margin-top: 10px;margin-bottom: 10px;padding-left: 20px;list-style: square}
+                .article a,.article blockquote,.article code,.article li,.article p,.article ul {font-size: 14px}
+                .article a {border-bottom: 1px solid #eee;}
+                .article h5 {font-weight: 600;font-size: 15px}
+                .article h4 {font-weight: 600;font-size: 17px}
+                .article h3 {font-weight: 600;font-size: 19px}
+                .article h2 {font-weight: 600;font-size: 21px}
+                .article h1 {font-weight: 600;font-size: 23px}
+                .article table {width:100%;margin: 10px 0;}
+                .article td, .article th {border-right: 1px solid #dcdcdc;padding: 8px 12px;border-bottom: 1px solid #dcdcdc;}
+                .article td:first-child, .article th:first-child {border-left: 1px solid #dcdcdc;}
+                .article th {border-top: 1px solid #dcdcdc;}
+                .article td a{border-bottom: 0;}
+            .comments {max-width: 600px;margin: -40px auto 50px auto;padding: 20px;}
+        .footer {color:#ccc;padding: 10px 20px;font-size: 9px;border-top: 1px solid #eee;}
+            .footer a,.footer a:visited,.footer a:hover {color:#ccc;}
+            .footer .footer-left{float: left;} .footer .footer-right{float: right;}
+        @media (max-width:768px){
+        	.header {position: relative;top: 0;left: 0;padding: 20px 20px 40px 20px;background-color: #fff;border:0;}
+        		.header .logo,.header .navi {padding: 0;float: left;} .header .logo {background: #fff;} .header .logo a{color: #000;}
+            .content .content-header {width: 100%;height: 80vh;flex-direction:column-reverse;align-items: center;justify-content:center;}
+                .content .content-header .ch-left {width: 100%;height: 50%;display: -webkit-flex;display: flex;flex-direction:column;justify-content:center;}
+                .content .content-header .ch-right {width: 100%;height: 50%;}
+            .article{margin: 0 auto;} .footer .footer-right{display: none;}
+        }
+    </style>
+
+</head><body>
+    <div class="header">
+		<div class="logo">
+            <a href="/">
+                {{#is "tag"}}
+                    {{#tag}}
+                        <i class="fa fa-tag"></i>&nbsp;{{name}}
+                    {{/tag}}
+                {{else}}
+                    {{@site.title}}
+                {{/is}}
+            </a>
+        </div>
+	    <div class="navi">
+		    {{!-- The blog navigation links --}}
+    	    {{navigation}}
+        </div>
+    </div>
+    <div class="content">
+        {{!-- All the main content gets inserted here, index.hbs, post.hbs, etc --}}
+        {{{body}}}
+    </div>
+
+    <div class="footer">
+    	<div class="footer-left">
+    		<p><i class="fa fa-copyright"></i></span> {{date format="YYYY"}} <a href="/">{{@site.title}}</a></p>
+    	</div>
+    	<div class="footer-right">
+    		<p>Theme <a href="https://github.com/ygbhf/gost-theme-block" target="_blank">BLOCK</a> with <a href="https://github.com/tryghost/ghost" target="_blank">Ghost</a> blog platform.</p>
+    	</div>
+    </div>
+    {{ghost_foot}}
+</body></html>
+<link href="https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
